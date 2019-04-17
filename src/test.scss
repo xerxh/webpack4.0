@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+    src: url('./font/iconfont.eot?t=1555385575391'); /* IE9 */
+    src: url('./font/iconfont.eot?t=1555385575391#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPIAAsAAAAAB+gAAAN5AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCfgqDUIMfATYCJAMMCwgABCAFhG0HPxvmBsgekqQHI3I4Z8K+IIAC4uFrLH1/dw/RBUGhZZ2JiorMVNVX5lRBtarKVgIJhUKxETdgp51qcJJ0qcnA42d6aO7VmgZBx20AqAoA9NNe6GjuNwXhKutV+z+X41virQ+UyxyTj3oBxgEFOOa2EiuQBL1h7IKWuJpA0yJN4JXz7WsgoTA7BeJx4soOJDJapaEw1IVqxcgiXgEV9fQCesLL4Pvx30GwklQyc62bR2de4PAX9C3Ds6+Zu4wCs+nMYOPI2AcoxG2l9UY4iu6DNdVoxDpgW42CX/DXnF+Qx93sHx4hEVVmfhtsQ3/ilyN1aTwYk3Dt46iihtf4hIhxalU0GgsKaMhB8ewiZqFhDp1n710cDU2RXULWzaSE0K4GYe8e4QbBLXb8dz8CwR+H80WxQT3s2K8+qBR7g3MPe5egj53aI4zplZAR8a0veLCDwadxMkH4suIRaT+Jf7wfFusr9jokicVxzBJEUJzV1JZgV5fQNMHlGqfS2yPcs6N8SgC7cUqNBD2MCeC4YmWcLf268gpnV/2rLkD8JyzIFQvfZ1RGVPZILx8aroSiYcpwVT5YAHpvg6KNxkGkqUfmOmh3AMpX+EVMw22jaJWbOui2sSObdp3MHE/jrLhtKP90pBUqAjfyzzIEfpRg2otAgdKXstMLmK4IEhnKYVzAw+yiJQpZ2AQ8dLI7MIhifqA3G3zipdRQC95GrO/megrWl6CTEy6xVtCeu7NGtqtUqtWmXJjNNYvZNn/PAHNsToE1fuJvvPny7Buet/xfbxXwk5LKCNxzbAG62QH127QFv4zXsaxoAlOXi8J1uIYvu/drzAmYbGIOnUP04fJJ53xC3SSBpGYBsrp1pBD7UNFyBFV1p9C0x2V8y0iWsCgN7KoGEPpWIel6C1nfM1IIGlRMfYeqfsDQdBsCM7ZsRiK7QxbahB44hbCJVpLZBkqFhc+42nPbpAUB5R2NvwnAUFs3n7hAiWaKPn7eakQ5DFiWEnAO1kPOFegstUWXeusc0gd9nbiqJ/XcdBFIuWQgG0EeEOUbSORSJOZVJ6nC55+hlT3OZhpIVeZ3yPBt6gd6tOl2QC6kshPpVs7J9mFlJAdhQBxDEYAzaIY4TgEZ1c22kIv0JAwIawd0rEpxXaW95eXi/dZAk7lsjhQ5itaTWHdtU5clch7PzAw0gQAAAAA=') format('woff2'),
+    url('./font/iconfont.woff?t=1555385575391') format('woff'),
+    url('./font/iconfont.ttf?t=1555385575391') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('./font/iconfont.svg?t=1555385575391#iconfont') format('svg'); /* iOS 4.1- */
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .iconwechat-fill:before {
+    content: "\e602";
+  }
+  
+  .iconqq-fill:before {
+    content: "\e603";
+  }
+  
