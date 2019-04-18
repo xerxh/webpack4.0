@@ -1,0 +1,32 @@
+// 将babel配置项放入默认配置文件中
+{
+    //babel语法编译核心 转换顺序  从下往上  从右到左
+    "presets" : [
+        // es6配置
+        ["@babel/preset-env", {  // 应用于业务代码  函数是全局
+            // 按需填充函数
+            "useBuiltIns": "usage",
+            // 目标浏览器
+            "targets": {
+                "chrome": "58",
+                "ie": "11"
+            }
+        }],
+        // babel react配置
+        "@babel/preset-react"
+    ],
+    // import语法编译codeSplit异步实验性语法插件
+    "plugins": ["dynamic-import-webpack"]
+    // "plugins": [ // babel函数按需填充  插件的形式   应用于引用的函数库（生成库）  以闭包的形式将函数注入（不污染全局环境）
+    //     [
+    //         "@babel/plugin-transform-runtime",
+    //         {
+    //             "absoluteRuntime": false,
+    //             "corejs": 2,
+    //             "helpers": true,
+    //             "regenerator": true,
+    //             "useESModules": false
+    //         }
+    //     ]
+    // ]
+}
