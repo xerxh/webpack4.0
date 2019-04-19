@@ -3,6 +3,8 @@
 // 可以通过映射转换 获得准确的位置
 
 import './index.css';
+import './style.css'
+
 import counter from './conter'
 import number from './number'
 counter()

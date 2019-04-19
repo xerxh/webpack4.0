@@ -7,3 +7,9 @@
 div:nth-of-type(odd) {
     color: red;
 }
+/* 
+    css代码分割  npm install -D mini-css-extract-plugin
+    如果使用css分割  样式会被直接打包进引入的JS文件中
+    不支持热更新 所以不适用开发环境
+    一般用于打包生产环境
+*/
