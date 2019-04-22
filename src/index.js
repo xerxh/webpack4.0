@@ -1,4 +1,4 @@
-// import './test.scss';
+import './test.scss';
 
 var root = document.getElementById('title')
 console.log(this, '--------')

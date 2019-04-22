@@ -7,16 +7,20 @@ const htmlWebpackplugin = require('html-webpack-plugin')
 const cleanwebpackplugin = require('clean-webpack-plugin')
 //
 const webpack= require('webpack')
+    // 利用环境变量来提取代码
+const devConfig = require('./webpack.dev.js')
+const prodConfig = require('./webpack.prod.js')
+const merge = require('webpack-merge')
 
 
 // 将production 和 devlopment环境共同的代码提取出来
-module.exports = { 
+const commonConfig = { 
     entry: {
-        // lodash: './src/lodash.js',
-        // main: './src/source.js',
+        lodash: './src/lodash.js',
+        main: './src/source.js',
         // codeSplit: './src/codeSplit.js',
         // test_babel: './src/test_es6.js',
-        // reactBabel: './src/reactbabel.js',
+        reactBabel: './src/reactbabel.js',
         // treeShaking: './src/treeShaking.js',
         sub: './src/index.js'
     },
@@ -121,5 +125,16 @@ module.exports = {
                 }
             }
         }
+    }
+}
+
+
+// 利用环境变量进行不同merge导出配置
+module.exports = (env) => {
+    console.log(env, '________________')
+    if ( env && env.production ) {
+        return merge(commonConfig, prodConfig)
+    }else{
+        return merge(commonConfig, devConfig)
     }
 }

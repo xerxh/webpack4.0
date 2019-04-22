@@ -8,8 +8,10 @@
 
 // var UglifyJsPlugin = require('uglifyjs-webpack-plugin') 
 const webpack = require('webpack')
-const merge = require('webpack-merge')
-const commonConfig = require('./webpack.common.js')
+    // 利用环境变量进行进一步的提取
+// const merge = require('webpack-merge')
+// const commonConfig = require('./webpack.common.js')
+
 const devConfig = {
     mode: 'development',
     devtool: '@#cheap-module-eval-source-map',  // 关source.map 错误代码的映射位置
@@ -23,7 +25,36 @@ const devConfig = {
         open: true, // 自动打开开启的页面
         port: 8080,
         hot: true,   // 开启热更新
-        hotOnly: true // 不自动刷新浏览器
+        hotOnly: true, // 不自动刷新浏览器
+            // 解决单页应用的浏览器输入路由问题
+        historyApiFallback: true,
+        // historyApiFallback: {
+        //     rewrites: [{
+        //         from: /abc.html/,
+        //         to: '/index.html'
+        //     }]
+        // },
+        // 代理
+        proxy: {
+            '/react/api': {
+                target: 'http://www.dell-lee.com',
+                // 开启对https的代理
+                secure: false,
+                // 用函数开启代理过滤
+                // bypass: function(req, res, proxyOption) {
+                //     if (req.headers.accept.indexOf('html' !== -1)){
+                //         console.log('skpiung')
+                //         return 'index.html'
+                //     }
+                // },
+                pathRewrite: {
+                    // 当访问header.json的数据时返回demo.json的数据
+                    'header.json': 'demo.json'
+                },
+                // 突破 orgin 验证的限制
+                changeOrigin: true
+            }
+        }
     },
     module: {
         rules: [
@@ -57,5 +88,6 @@ const devConfig = {
     ]
 }
 
+module.exports = devConfig
 //  合并两个配置文件
-module.exports = merge(commonConfig, devConfig)
+// module.exports = merge(commonConfig, devConfig)

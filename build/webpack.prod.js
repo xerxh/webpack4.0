@@ -1,7 +1,8 @@
 
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin') 
-const merge = require('webpack-merge')
-const commonConfig = require('./webpack.common.js')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+    // 利用环境变量进一步提取配置代码
+// const merge = require('webpack-merge')
+// const commonConfig = require('./webpack.common.js')
 // css代码分割
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
@@ -60,4 +61,4 @@ const prodConfig = {
     ]
 }
 
-module.exports = merge(commonConfig, prodConfig)
+module.exports =  prodConfig
