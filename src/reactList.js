@@ -1,17 +1,15 @@
 // import "@babel/polyfill";  // babel函数填充库
 
-import React, { Component } from 'react'
-import ReactDom from 'react-dom'
+import React, { Component } from 'react';
 
 class List extends Component {
+  componentDidMount() {
 
-    componentDidMount() {
+  }
 
-    }
-
-    render(h) {
-        return <div>List page</div>
-    }
+  render() {
+    return <div>List page</div>;
+  }
 }
 
 export default List;

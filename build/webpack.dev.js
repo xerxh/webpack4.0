@@ -21,12 +21,13 @@ const devConfig = {
         chunkFilename: '[name].chunk.js',
     },
     devServer: {
+        overlay: true, // 配合eslint 和 eslint-loader使用
         contentBase: './dist', // 监听打包的目录
         open: true, // 自动打开开启的页面
         port: 8080,
         hot: true,   // 开启热更新
         hotOnly: true, // 不自动刷新浏览器
-            // 解决单页应用的浏览器输入路由问题
+            // 解决单页应用的浏览器输入路由问题 自动转到根路径
         historyApiFallback: true,
         // historyApiFallback: {
         //     rewrites: [{
@@ -40,7 +41,7 @@ const devConfig = {
                 target: 'http://www.dell-lee.com',
                 // 开启对https的代理
                 secure: false,
-                // 用函数开启代理过滤
+                // 用函数开启代理过滤 return false跳过这次代理
                 // bypass: function(req, res, proxyOption) {
                 //     if (req.headers.accept.indexOf('html' !== -1)){
                 //         console.log('skpiung')

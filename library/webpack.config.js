@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
     mode: 'production',
     entry: './src/index.js',
-    // 打包
+    // 不将库打包到包中
     externals: ['lodash'],
     output: {
         path: path.resolve(__dirname, 'dist'),

@@ -1,6 +1,8 @@
     // 利用webpack-merge插件将公共部分和环境配置进行合并
     // npm i -D webpack-merge
 const path = require('path')
+// 在模板中再度添加静态资源文件
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 // htmlwebpackplugin 会在打包结束后，自动生成一个html文件,并把打包生成的js自动引入到这个html文件中
 const htmlWebpackplugin = require('html-webpack-plugin')
 // // 清除上一次打包的目录  以便重新打包
@@ -24,6 +26,15 @@ const commonConfig = {
         // treeShaking: './src/treeShaking.js',
         sub: './src/index.js'
     },
+    resolve: {
+        // 当进行模块引用时优先搜索.js .jsx结尾的文件
+        extensions: ['.js', 'jsx'],
+        // 将模块默认文件从index.js改成child.js 一般不使用
+        // mainFiles: ['index', 'child']
+        alias: { // 别名
+            src: path.resolve(__dirname, "../src/child")
+        }
+    },
     output: {
         // publicPath: '/',
         // filename: '[name].js',
@@ -44,6 +55,16 @@ const commonConfig = {
                     {
                         loader: "babel-loader"
                     },
+                    // 一般使用git 钩子 启动 eslint src来进行检查
+                    { // 使用会降低打包速度
+                        loader: "eslint-loader",
+                        options: {
+                            // 启用 ESLint自动修复功能。
+                            fix: true
+                        }
+                        // 强制先执行
+                        // force: 'pre'
+                    }
                     // 利用imports-loader来修改所以模块中的this指向
                     // {
                     //     loader: "imports-loader?this=>window"
@@ -89,6 +110,9 @@ const commonConfig = {
             $: 'jquery',
             _: 'lodash',
             _join: ['lodash', 'join']
+        }),
+        new AddAssetHtmlWebpackPlugin({
+            filepath: path.resolve(__dirname, "../dell/vendors.dell.js")
         })
         // new webpack.HotModuleReplacementPlugin(),
         //使用插件对 tree shanking 优化后的继续进行压缩 未使用的方法不会被打包进代码 使用后不支持source-map
