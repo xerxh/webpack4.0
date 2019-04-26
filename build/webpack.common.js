@@ -14,6 +14,42 @@ const devConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
 const merge = require('webpack-merge')
 
+const fs = require('fs')
+
+
+const plugins = [
+    new htmlWebpackplugin({
+        template: 'src/index.html'
+    }),
+    new cleanwebpackplugin(),
+    // shimming 垫片
+    new webpack.ProvidePlugin({
+        // 如果一个模块中使用了$符号就会自动在模块中引入jquey
+        // 并将jqery赋值为$
+        $: 'jquery',
+        _: 'lodash',
+        _join: ['lodash', 'join']
+    })
+]
+// 读取文件夹
+const files = fs.readdirSync(path.resolve(__dirname, '../dell'))
+console.log(files, '++++++++++++++++++++++++')
+files.forEach(file => {
+    if(/.*\.dell.js/.test(file)) {
+        plugins.push( 
+            new AddAssetHtmlWebpackPlugin({ // 拆分模块
+                filepath: path.resolve(__dirname, '../dell', file)
+            }),
+        )
+    }
+    if(/.*\.manifest.json/.test(file)) {
+        plugins.push( 
+            new webpack.DllReferencePlugin({
+                manifest: path.resolve(__dirname, '../dell', file)
+            }),
+        )
+    }
+})
 
 // 将production 和 devlopment环境共同的代码提取出来
 const commonConfig = { 
@@ -98,28 +134,43 @@ const commonConfig = {
         ]
     },
     // plugin可以在webpack运行到某个阶段/时刻时，帮我们做一些事情
-    plugins: [
-        new htmlWebpackplugin({
-            template: 'src/index.html'
-        }),
-        new cleanwebpackplugin(),
-        // shimming 垫片
-        new webpack.ProvidePlugin({
-            // 如果一个模块中使用了$符号就会自动在模块中引入jquey
-            // 并将jqery赋值为$
-            $: 'jquery',
-            _: 'lodash',
-            _join: ['lodash', 'join']
-        }),
-        new AddAssetHtmlWebpackPlugin({
-            filepath: path.resolve(__dirname, "../dell/vendors.dell.js")
-        })
-        // new webpack.HotModuleReplacementPlugin(),
-        //使用插件对 tree shanking 优化后的继续进行压缩 未使用的方法不会被打包进代码 使用后不支持source-map
-        // new UglifyJsPlugin({
-        //     test: /\.js$/
-        // }),
-    ],
+    plugins: plugins,
+        // plugins: [
+        //     new htmlWebpackplugin({
+        //         template: 'src/index.html'
+        //     }),
+        //     new cleanwebpackplugin(),
+        //     // shimming 垫片
+        //     new webpack.ProvidePlugin({
+        //         // 如果一个模块中使用了$符号就会自动在模块中引入jquey
+        //         // 并将jqery赋值为$
+        //         $: 'jquery',
+        //         _: 'lodash',
+        //         _join: ['lodash', 'join']
+        //     }),
+        //     // 在html模板中自动引入打包的公共模块文件
+        //     new AddAssetHtmlWebpackPlugin({
+        //         filepath: path.resolve(__dirname, "../dell/vendors.dell.js")
+        //     }),
+        //     // 在html模板中自动引入打包的公共模块文件
+        //     new AddAssetHtmlWebpackPlugin({ // 拆分模块
+        //         filepath: path.resolve(__dirname, "../dell/react.dell.js")
+        //     }),
+        //     // Dll引用插件当打包index.js时 会引入mainfest.json关系表 对于引入的第三方模块会查找映射关系
+        //     // 当找到关系时 会底层帮我们在挂载的全局里拿到已经打包好的直接加载  从而避免重复打包 优化了性能
+        //     // 当没有找到时 才在node_modeles找到进行打包
+        //     new webpack.DllReferencePlugin({
+        //         manifest: path.resolve(__dirname, "../dell/vendors.manifest.json")
+        //     }),
+        //     new webpack.DllReferencePlugin({ // 拆分模块
+        //         manifest: path.resolve(__dirname, "../dell/react.manifest.json")
+        //     })
+        //     // new webpack.HotModuleReplacementPlugin(),
+        //     //使用插件对 tree shanking 优化后的继续进行压缩 未使用的方法不会被打包进代码 使用后不支持source-map
+        //     // new UglifyJsPlugin({
+        //     //     test: /\.js$/
+        //     // }),
+        // ],
     // codeSplit 公共代码切割配置（对公用类库自动进行分割）
     // css也可以进行分割
     optimization: {
