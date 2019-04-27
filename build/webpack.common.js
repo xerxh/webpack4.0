@@ -62,6 +62,11 @@ const commonConfig = {
         // treeShaking: './src/treeShaking.js',
         sub: './src/index.js'
     },
+    // 对于配置loader的查找路径
+    resolveLoader: {
+        // 对于一个loader会先在node_modules里面查找 没有会在./loaders文件夹下进行查找
+        modules: ['node_modules', './loaders']
+    },
     resolve: {
         // 当进行模块引用时优先搜索.js .jsx结尾的文件
         extensions: ['.js', 'jsx'],

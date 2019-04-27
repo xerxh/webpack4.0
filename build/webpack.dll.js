@@ -3,6 +3,9 @@ const webpack = require('webpack')
 // 优化将公共库抽取来单独打包 只打包一次提高后续打包速度
 // 目标：第三方模块只打包一次
 // 引入第三方模块的时候，需要去使用dll文件
+
+// 可使用thread-loader 进行多进程打包
+// 可使用parallel-webpack  happypack进行多页面打包
 module.exports = {
     mode: 'production',
     entry: {
