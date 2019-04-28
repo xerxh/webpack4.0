@@ -7,3 +7,4 @@
 ## webpack  script
   3. npm run buid --> webpack
 ## webpack-cli 使得我们可以在命令行中使用 webpack指令
+  4. npx eslint --init
