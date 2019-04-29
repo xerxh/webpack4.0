@@ -1,6 +1,6 @@
 // import _ from 'loadsh'; // 1MB
 // import $ from 'jquery';
-import ui from './shimming';
+import ui from './shimming'; // eslint-disable-line eslint忽略特殊注释
 // webpack浏览器缓存
 const dom = $('<div>');
 dom.html(_.join(['alo', 'alo', 'al'], '---'));

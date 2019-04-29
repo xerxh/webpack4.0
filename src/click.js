@@ -4,4 +4,4 @@ function handlclick() {
   document.body.appendChild(el);
 }
 
-export default handlclick;
+export default handlclick

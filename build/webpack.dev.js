@@ -35,6 +35,8 @@ const devConfig = {
         //         to: '/index.html'
         //     }]
         // },
+            // 访问资源需要的基础路径 路径映射
+        // publicPath: './public'
         // 代理
         proxy: {
             '/react/api': {

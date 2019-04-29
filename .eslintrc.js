@@ -21,8 +21,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 6,
-    sourceType: 'module',
+    ecmaVersion: 6, // es版本
+    sourceType: 'module', 
   },
   plugins: [
     'react',
@@ -31,6 +31,8 @@ module.exports = {
     // 不遵循该要求
     // "react/prefer-stateless-function": 0,
     // 运行在 .js文件中 使用JSX语法
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    // 不检测分号
+    "semi": [0]
   },
 };
