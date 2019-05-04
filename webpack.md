@@ -6,4 +6,9 @@
 5. 使用DllPlugin提高打包速度
 6. thread-loader parallel-webpack  happypack 进行多进程打包
 
-## 当对对页面应用打包
+## 提高webpack构建速度
+- 将大型库外链  externals 将常用库引入外链作为library
+- 将库进行预编译
+- 减少构建搜索或便宜路径
+- 缓存
+- 并行
